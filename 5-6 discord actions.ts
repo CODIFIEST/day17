@@ -17,18 +17,16 @@ function addKeksToMessage(message:dccMessage){
     message.keks +=1;
 }
 
+//because user.isAdmin is bool, just return it.
 function canDeleteServer(user:dccUser):boolean {
-    if(user.isAmdin){return true}
-    else{
-        return false;
-    }
+    return user.isAmdin;
 }
 // editMesagetakes a discord message, a discord user, and newText, 
 // and if the user name is the sae as the user on the dccMessage itself,
 // it allows them to edit the message
 
 function editMessage(message:dccMessage, user:dccUser, newText:string){
-    if(message.user === user){
+    if(message.user.name === user.name){
         message.text = `${message.text} ${newText}`
     }
 }
